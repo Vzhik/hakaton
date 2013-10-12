@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JSInquisitorModelStoreContainer" CdmEntityContainer="JSInquisitorEntities">
+    <EntitySetMapping Name="ErrorBases">
+      <EntityTypeMapping TypeName="JSInquisitorModel.ErrorBas">
+        <MappingFragment StoreEntitySet="ErrorBases">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ErrorBaseId" ColumnName="ErrorBaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Errors">
+      <EntityTypeMapping TypeName="JSInquisitorModel.Error">
+        <MappingFragment StoreEntitySet="Errors">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ErrorBaseId" ColumnName="ErrorBaseId" />
+          <ScalarProperty Name="Stack" ColumnName="Stack" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+          <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="JSInquisitorModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+          <ScalarProperty Name="TimeAfterStart" ColumnName="TimeAfterStart" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="JSInquisitorModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
