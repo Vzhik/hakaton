@@ -18,9 +18,9 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.User), "ErrorBas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.ErrorBas), true)]
-[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "ErrorBas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.ErrorBas), "Error", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.Error), true)]
-[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_Events_Errors", "Error", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.Error), "Event", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.Event), true)]
+[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.User), "ErrorBases", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.ErrorBas), true)]
+[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "ErrorBases", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.ErrorBas), "Errors", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.Error), true)]
+[assembly: EdmRelationshipAttribute("JSInquisitorModel", "FK_Events_Errors", "Errors", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repositories.EntityModel.Error), "Events", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repositories.EntityModel.Event), true)]
 
 #endregion
 
@@ -31,32 +31,32 @@ namespace Repositories.EntityModel
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class JSInquisitorEntities : ObjectContext
+    public partial class JSInquisitorEntities1 : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new JSInquisitorEntities object using the connection string found in the 'JSInquisitorEntities' section of the application configuration file.
+        /// Initializes a new JSInquisitorEntities1 object using the connection string found in the 'JSInquisitorEntities1' section of the application configuration file.
         /// </summary>
-        public JSInquisitorEntities() : base("name=JSInquisitorEntities", "JSInquisitorEntities")
+        public JSInquisitorEntities1() : base("name=JSInquisitorEntities1", "JSInquisitorEntities1")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new JSInquisitorEntities object.
+        /// Initialize a new JSInquisitorEntities1 object.
         /// </summary>
-        public JSInquisitorEntities(string connectionString) : base(connectionString, "JSInquisitorEntities")
+        public JSInquisitorEntities1(string connectionString) : base(connectionString, "JSInquisitorEntities1")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new JSInquisitorEntities object.
+        /// Initialize a new JSInquisitorEntities1 object.
         /// </summary>
-        public JSInquisitorEntities(EntityConnection connection) : base(connection, "JSInquisitorEntities")
+        public JSInquisitorEntities1(EntityConnection connection) : base(connection, "JSInquisitorEntities1")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -412,16 +412,16 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "ErrorBas")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "ErrorBases")]
         public ErrorBas ErrorBas
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBas").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBases").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBas").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBases").Value = value;
             }
         }
         /// <summary>
@@ -433,13 +433,13 @@ namespace Repositories.EntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBas");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBases");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBas", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ErrorBas>("JSInquisitorModel.FK_Errors_ErrorBases", "ErrorBases", value);
                 }
             }
         }
@@ -450,18 +450,18 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Events_Errors", "Event")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Events_Errors", "Events")]
         public EntityCollection<Event> Events
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Event>("JSInquisitorModel.FK_Events_Errors", "Event");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Event>("JSInquisitorModel.FK_Events_Errors", "Events");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Event>("JSInquisitorModel.FK_Events_Errors", "Event", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Event>("JSInquisitorModel.FK_Events_Errors", "Events", value);
                 }
             }
         }
@@ -582,16 +582,16 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "User")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "Users")]
         public User User
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "Users").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "Users").Value = value;
             }
         }
         /// <summary>
@@ -603,13 +603,13 @@ namespace Repositories.EntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("JSInquisitorModel.FK_ErrorBases_Users", "Users", value);
                 }
             }
         }
@@ -620,18 +620,18 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "Error")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Errors_ErrorBases", "Errors")]
         public EntityCollection<Error> Errors
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Error>("JSInquisitorModel.FK_Errors_ErrorBases", "Error");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Error>("JSInquisitorModel.FK_Errors_ErrorBases", "Errors");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Error>("JSInquisitorModel.FK_Errors_ErrorBases", "Error", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Error>("JSInquisitorModel.FK_Errors_ErrorBases", "Errors", value);
                 }
             }
         }
@@ -804,16 +804,16 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Events_Errors", "Error")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_Events_Errors", "Errors")]
         public Error Error
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Error").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Errors").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Error").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Errors").Value = value;
             }
         }
         /// <summary>
@@ -825,13 +825,13 @@ namespace Repositories.EntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Error");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Errors");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Error", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Error>("JSInquisitorModel.FK_Events_Errors", "Errors", value);
                 }
             }
         }
@@ -952,18 +952,18 @@ namespace Repositories.EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "ErrorBas")]
+        [EdmRelationshipNavigationPropertyAttribute("JSInquisitorModel", "FK_ErrorBases_Users", "ErrorBases")]
         public EntityCollection<ErrorBas> ErrorBases
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ErrorBas>("JSInquisitorModel.FK_ErrorBases_Users", "ErrorBas");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ErrorBas>("JSInquisitorModel.FK_ErrorBases_Users", "ErrorBases");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ErrorBas>("JSInquisitorModel.FK_ErrorBases_Users", "ErrorBas", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ErrorBas>("JSInquisitorModel.FK_ErrorBases_Users", "ErrorBases", value);
                 }
             }
         }

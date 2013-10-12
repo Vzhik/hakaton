@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\CreateUserEnum.cs" />
-    <Compile Include="EntityModel\Model.Designer.cs">
+    <Compile Include="EntityModel\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Enums\CreateUserEnum.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\EventTypes.cs" />
@@ -61,13 +61,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="EntityModel\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
+    <EntityDeploy Include="EntityModel\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

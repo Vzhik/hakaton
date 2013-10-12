@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JSInquisitorModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="JSInquisitorEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ErrorBases" EntityType="JSInquisitorModel.ErrorBas" />
+    <EntitySet Name="Errors" EntityType="JSInquisitorModel.Error" />
+    <EntitySet Name="Events" EntityType="JSInquisitorModel.Event" />
+    <EntitySet Name="Users" EntityType="JSInquisitorModel.User" />
+    <AssociationSet Name="FK_ErrorBases_Users" Association="JSInquisitorModel.FK_ErrorBases_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ErrorBases" EntitySet="ErrorBases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Errors_ErrorBases" Association="JSInquisitorModel.FK_Errors_ErrorBases">
+      <End Role="ErrorBases" EntitySet="ErrorBases" />
+      <End Role="Errors" EntitySet="Errors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Events_Errors" Association="JSInquisitorModel.FK_Events_Errors">
+      <End Role="Errors" EntitySet="Errors" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ErrorBas">
+    <Key>
+      <PropertyRef Name="ErrorBaseId" />
+    </Key>
+    <Property Name="ErrorBaseId" Type="Guid" Nullable="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="JSInquisitorModel.FK_ErrorBases_Users" FromRole="ErrorBases" ToRole="Users" />
+    <NavigationProperty Name="Errors" Relationship="JSInquisitorModel.FK_Errors_ErrorBases" FromRole="ErrorBases" ToRole="Errors" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="Guid" Nullable="false" />
+    <Property Name="Agent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FileUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PageUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Line" Type="Int32" />
+    <Property Name="Stack" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ErrorBaseId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ErrorBas" Relationship="JSInquisitorModel.FK_Errors_ErrorBases" FromRole="Errors" ToRole="ErrorBases" />
+    <NavigationProperty Name="Events" Relationship="JSInquisitorModel.FK_Events_Errors" FromRole="Errors" ToRole="Events" />
+    <Property Type="DateTime" Name="Time" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EventType" Type="Int32" Nullable="false" />
+    <Property Name="Target" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TimeAfterStart" Type="Int32" Nullable="false" />
+    <Property Name="ErrorId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Error" Relationship="JSInquisitorModel.FK_Events_Errors" FromRole="Events" ToRole="Errors" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ErrorBases" Relationship="JSInquisitorModel.FK_ErrorBases_Users" FromRole="Users" ToRole="ErrorBases" />
+  </EntityType>
+  <Association Name="FK_ErrorBases_Users">
+    <End Role="Users" Type="JSInquisitorModel.User" Multiplicity="1" />
+    <End Role="ErrorBases" Type="JSInquisitorModel.ErrorBas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ErrorBases">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Errors_ErrorBases">
+    <End Role="ErrorBases" Type="JSInquisitorModel.ErrorBas" Multiplicity="1" />
+    <End Role="Errors" Type="JSInquisitorModel.Error" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ErrorBases">
+        <PropertyRef Name="ErrorBaseId" />
+      </Principal>
+      <Dependent Role="Errors">
+        <PropertyRef Name="ErrorBaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Events_Errors">
+    <End Role="Errors" Type="JSInquisitorModel.Error" Multiplicity="1" />
+    <End Role="Events" Type="JSInquisitorModel.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Errors">
+        <PropertyRef Name="ErrorId" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="ErrorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

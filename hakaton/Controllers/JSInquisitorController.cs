@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using hakaton.Models;
 using Repositories.Models;
+using hakaton.Services;
 
 namespace hakaton.Controllers
 {
@@ -16,8 +17,7 @@ namespace hakaton.Controllers
         public void PushError(ErrorModel error)
         {
             error.Init();
-            int i;
-            i = 0;
+            ErrorService.SaveError(error);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Repositories.Repositories
 {
     public class UserRepository
     {
-        JSInquisitorEntities _context = new JSInquisitorEntities();
+        JSInquisitorEntities1 _context = new JSInquisitorEntities1();
         public User GetUserByEmail(string email)
         {
             return _context.Users.SingleOrDefault(p => p.Email == email);

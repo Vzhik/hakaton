@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JSInquisitorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="JSInquisitorModelStoreContainer">
+    <EntitySet Name="ErrorBases" EntityType="JSInquisitorModel.Store.ErrorBases" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Errors" EntityType="JSInquisitorModel.Store.Errors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Events" EntityType="JSInquisitorModel.Store.Events" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="JSInquisitorModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ErrorBases_Users" Association="JSInquisitorModel.Store.FK_ErrorBases_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ErrorBases" EntitySet="ErrorBases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Errors_ErrorBases" Association="JSInquisitorModel.Store.FK_Errors_ErrorBases">
+      <End Role="ErrorBases" EntitySet="ErrorBases" />
+      <End Role="Errors" EntitySet="Errors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Events_Errors" Association="JSInquisitorModel.Store.FK_Events_Errors">
+      <End Role="Errors" EntitySet="Errors" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ErrorBases">
+    <Key>
+      <PropertyRef Name="ErrorBaseId" />
+    </Key>
+    <Property Name="ErrorBaseId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Errors">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Agent" Type="nvarchar(max)" />
+    <Property Name="FileUrl" Type="nvarchar(max)" />
+    <Property Name="PageUrl" Type="nvarchar(max)" />
+    <Property Name="Line" Type="int" />
+    <Property Name="Stack" Type="nvarchar(max)" />
+    <Property Name="ErrorBaseId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventType" Type="int" Nullable="false" />
+    <Property Name="Target" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TimeAfterStart" Type="int" Nullable="false" />
+    <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ErrorBases_Users">
+    <End Role="Users" Type="JSInquisitorModel.Store.Users" Multiplicity="1" />
+    <End Role="ErrorBases" Type="JSInquisitorModel.Store.ErrorBases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ErrorBases">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Errors_ErrorBases">
+    <End Role="ErrorBases" Type="JSInquisitorModel.Store.ErrorBases" Multiplicity="1" />
+    <End Role="Errors" Type="JSInquisitorModel.Store.Errors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ErrorBases">
+        <PropertyRef Name="ErrorBaseId" />
+      </Principal>
+      <Dependent Role="Errors">
+        <PropertyRef Name="ErrorBaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Events_Errors">
+    <End Role="Errors" Type="JSInquisitorModel.Store.Errors" Multiplicity="1" />
+    <End Role="Events" Type="JSInquisitorModel.Store.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Errors">
+        <PropertyRef Name="ErrorId" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="ErrorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

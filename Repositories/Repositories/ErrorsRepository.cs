@@ -9,31 +9,43 @@ namespace Repositories.Repositories
 {
     public class ErrorsRepository
     {
-        JSInquisitorEntities _context = new JSInquisitorEntities();
+        JSInquisitorEntities1 _context = new JSInquisitorEntities1();
 
         public void AddError(ErrorModel error)
         {
             Event[] events = new Event[error.Events.Length];
             for (int i = 0; i < error.Events.Length; i++)
             {
+                events[i] = new Event();
                 events[i].EventType = (int)error.Events[i].EventType;
                 events[i].Target = error.Events[i].Target;
                 events[i].TimeAfterStart = error.Events[i].TimeAfterStart;
                 events[i].ErrorId = error.Id;
                 events[i].Id = error.Events[i].Id;
             }
-            var errorBaseId = Guid.NewGuid();
-            var errorDb = new Error() { Agent = error.Agent, FileUrl = error.FileUrl, PageUrl = error.PageUrl, Line = error.Line, Stack = error.Stack, ErrorBaseId = errorBaseId, Time = error.Time };
-            var baseError = new ErrorBas() { Message = error.Message, ErrorBaseId = errorBaseId, UserId = error.UserId };
+            var baseError = createErrorBase(error.UserId, error.Message);
+            var errorDb = new Error() { ErrorId = Guid.NewGuid(), Agent = error.Agent, FileUrl = error.FileUrl, PageUrl = error.PageUrl, Line = error.Line, Stack = error.Stack, ErrorBaseId = baseError.ErrorBaseId, Time = DateTime.Now };
             try
             {
-                _context.ErrorBases.AddObject(baseError);
+                _context.Errors.AddObject(errorDb);
                 _context.SaveChanges();
             }
             catch (Exception)
             {
 
             }
+        }
+
+        private ErrorBas createErrorBase(Guid userId, string message)
+        {
+            var error = _context.ErrorBases.SingleOrDefault(p => p.UserId == userId && p.Message == message);
+            if (error == null)
+            {
+                _context.ErrorBases.AddObject(new ErrorBas() { Message = message, UserId = userId, ErrorBaseId = Guid.NewGuid() });
+                _context.SaveChanges();
+                error = _context.ErrorBases.Single(p => p.UserId == userId && p.Message == message);
+            }
+            return error;
         }
     }
 }
