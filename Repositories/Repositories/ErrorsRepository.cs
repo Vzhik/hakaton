@@ -36,6 +36,13 @@ namespace Repositories.Repositories
             }
         }
 
+        public List<ErrorBas> GetErrors(Guid userId, int period)
+        {
+            var errors = _context.ErrorBases.Where(p => p.UserId == userId);
+            //errors = errors.Where(p => p.Errors.Where(c => c.Time >= DateTime.Now.AddDays(-period)).ToList().Count > 0);
+            return errors.ToList();
+        }
+
         private ErrorBas createErrorBase(Guid userId, string message)
         {
             var error = _context.ErrorBases.SingleOrDefault(p => p.UserId == userId && p.Message == message);

@@ -2,7 +2,7 @@
 window.onerror = function (msg, url, line) {
     if (JSInquisitorId != undefined) {
         $.ajax({
-            url: "api/jsinquisitor/PushError",
+            url: "/api/jsinquisitor/PushError",
             type: "POST",
             data: JSON.stringify({ Message: msg, Agent: navigator.userAgent, FileUrl: url, Line: line, PageUrl: window.location.href, UserId: JSInquisitorId, Stack: event.error.stack, Events: events }),
             contentType: 'application/json; charset=utf-8'
@@ -28,9 +28,9 @@ $(document).ready(function () {
 
 
 
-//user's code
+//user's code move to layout
 $(document).ready(function () {
-    $("#errorButton").click(function () {
+    $("#error-button").click(function () {
         var qwe = a;
         throw 123;
     });

@@ -38,17 +38,31 @@ function drawBatchContractsChart() {
     // Create and draw the visualization.
     new google.visualization.LineChart(document.getElementById('chart-window')).draw(googleData,
     { //fontSize: 10,
-        width: 800,
-        height: 500,
-        vAxis: { maxValue: max, title: 'Views' },
+        width: 600,
+        height: 300,
+        vAxis: { maxValue: max, title: 'Errors' },
         hAxis: { slantedText: false, maxAlternation: 4, showTextEvery: showEvery }
     });
 }
 
-$(document).ready(function() {
-    drawBatchContractsChart();
+function drawTable() {
+    $.ajax({
+        url: "/Error/GetErrorsTable",
+        type: "POST",
+        data: JSON.stringify({ userId: JSInquisitorId, period: parseInt($('.periodOfBatchChart:checked').val())}),
+        contentType: 'application/json; charset=utf-8',
+        success: function(html)
+        {
+            $("#div-for-table").html(html);
+        }
+    });
+}
 
-    $('.periodOfBatchChart').change(function() {
+$(document).ready(function () {
+    drawBatchContractsChart();
+    drawTable();
+    $('.periodOfBatchChart').change(function () {
         drawBatchContractsChart();
+        drawTable();
     });
 });

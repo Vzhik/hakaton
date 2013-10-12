@@ -1,34 +1,55 @@
 ﻿@{
     ViewBag.Title = "Chart";
 }
-
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="~/Scripts/Tables.js"></script>
-        @Scripts.Render("~/Scripts/chart.js");
-
+@Scripts.Render("~/Scripts/chart.js")
+<style>
+    .left-div, .right-div
+    {
+        display: inline-block;
+        margin: 5px;
+        vertical-align: top;
+    }
+    .left-div
+    {
+        width: 100px;
+        margin-left: 100px
+    }
+    .right-div
+    {
+        margin-top: -50px
+    }
+</style>
 @if (User.Identity.IsAuthenticated)
 {
     <script type="text/javascript">
         google.load('visualization', '1', { 'packages': ['coreChart'] });
     </script>
     <input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
-    <fieldset>
-        <input type="radio" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />For 3 days<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="7" checked="true" title="For 1 week" />For 1 week<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />For 1 month<br />
-    </fieldset>
-   // <div id="chart-window" style="width: 600px; height: 300px;"></div>
+    
+    <div>
+    <div class="left-div">
+        <input type="radio" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />For
+        3 days<br />
+        <input type="radio" name="group1" class="periodOfBatchChart" value="7" checked="true"
+            title="For 1 week" />For 1 week<br />
+        <input type="radio" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />For
+        1 month<br />
+    </div>
+    <div class="right-div">
+        <div id="chart-window">
+        </div>
+    </div>
+    </div>
 
-
-<table id="example" class="display">
-
-
-</table>
+    <div id="div-for-table">
+    </div>
 
 
 }
 else
 {
-    <h1>You must log in if you want to use this service!</h1>
+    <h1>
+        You must log in if you want to use this service!</h1>
 }
-
