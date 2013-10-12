@@ -4,39 +4,32 @@
     ViewBag.Title = "FAQ";
 }
 
+
+<h1>F.A.Q.</h1>
+
 @if (User.Identity.IsAuthenticated)
 {
-    <text>
-    <ul>
-        <li>
-            Q: What needs to be done to service began working?<br />
-            A: Include this code to your site: 
-            <p>
-                &lt;script&gt; <br/>
-                ...<br/>
-                @Model.ToString()
-                <br/> &lt;/script&gt; 
-            </p>
-        </li>
-    </ul>
-    </text>
+    <section>
+        <h3>Q: What needs to be done to service began working?</h3>
+        <h3>A: Include this code to your site: </h3>
+        <h4>&lt;script type="text/javascript" src="http://ourwebsite/scripts/JsInquisitor.js" &gt;
+            <br />
+            <br />
+            <div style="padding-left: 40px;">JSInquisitorId = "@Model.ToString()";</div>
+            <br />
+            &lt;/script&gt; 
+        </h4>
+    </section>
 }
-else
-{
-    <text>
-    <ul>
-        <li>
-            Q: Why do you need this service?<br />
-            A: Our service is designed for the collection of statistical data on the java script errors on your sites.
-        </li>
-        <li>
-            Q:What can the service do?<br />
-            A:The service can collect statistics on errors and to represent it in the form of charts.
-        </li>
-        <li>
-            Q:What we want?<br />
-            A:We want to help you fix bugs on your sites.
-        </li>
-    </ul>
-    </text>
-}
+<section>
+    <h3>Q: Why do you need this service?</h3>
+    <h3>A: Our service is designed for the collection of statistical data on the java script errors on your sites.</h3>
+</section>
+<section>
+    <h3>Q: What can the service do?</h3>
+    <h3>A: The service can collect statistics on errors and to represent it in the form of charts.</h3>
+</section>
+<section>
+    <h3>Q:What we want?</h3>
+    <h3>A:We want to help you fix bugs on your sites.</h3>
+</section>

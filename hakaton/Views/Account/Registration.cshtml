@@ -2,33 +2,32 @@
 
 <div id="signUpBlock">
     <form action="/Account/Registration/" method="post">
-        <h3><span class="circle icon"></span>PLEASE FILL IN ALL FIELDS</h3>
+        <h3><span></span>PLEASE FILL IN ALL FIELDS</h3>
         <div class="error">@Html.ValidationSummary(true, "Registration was unsuccessful. Please correct the errors and try again.")</div>
-        <div class="sign-up-block" style="padding-bottom: 0">
-            <div class="sign-up-subblock">
-                <div class="left">
-                    <span class="text-label">Email <span class="validation-error">*</span></span>
+        <div style="padding-bottom: 0">
+            <div>
+                <div>
+                    <span>Email <span>*</span></span>
                     @Html.EditorFor(model => model.Email, new { tabindex = "1" })
                     @Html.ValidationMessageFor(model => model.Email)
                 </div>
             </div>
-            <div class="sign-up-subblock">
-                <div class="left">
-                    <span class="text-label">Password <span class="validation-error">*</span></span>
+            <div>
+                <div>
+                    <span>Password <span>*</span></span>
                     @Html.EditorFor(model => model.Password, new { tabindex = 2 })
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
             </div>
-            <div class="sign-up-subblock">
-                <div class="left">
-                    <span class="text-label">Confirm password <span class="validation-error">*</span></span>
+            <div>
+                <div>
+                    <span>Confirm password <span>*</span></span>
                     @Html.EditorFor(model => model.ConfirmPassword, new { tabindex = 3 })
                     @Html.ValidationMessageFor(model => model.ConfirmPassword)
                 </div>
             </div>
-            <input class="log-on-button no-active" type="submit" value="Submit" title="Submit" onclick="" style="margin-top: 30px;" />
+            <input type="submit" value="Submit" title="Submit" onclick="" style="margin-top: 30px;" />
             <span class="field-validation-error" id="errorText">@ViewBag.ErrorText</span>
-            <div class="blocked-block"></div>
         </div>
     </form>
 </div>

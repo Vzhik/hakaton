@@ -1,73 +1,69 @@
-﻿<!DOCTYPE html>
+﻿@using hakaton.Controllers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>JS Inquisitor - @ViewBag.Title</title>
+    <title>JS Inquisitor @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/JSInquisitor.js")
-<script type="text/javascript">
-            JSInquisitorId = "3c8e4c8a-a7e4-4755-903c-e583bd6004a6";
-        </script>
+    <script type="text/javascript">
+        JSInquisitorId = "3c8e4c8a-a7e4-4755-903c-e583bd6004a6";
+    </script>
 
 </head>
 <body>
     <header>
-        <div id="login">
-            Hello, <span class="username">@User.Identity.Name</span>!
+        <div id="header">
+            <h1 id="logo-text">JS INQUISITOR</h1>
+            <h2 id="logo-slogan">Fire, sword and faith - bugs will not pass.</h2>
         </div>
-        <nav>
-            <div class="menu-item">
-                <input id="error-button" type="button" value="Error" />
-            </div>
-            <div class="menu-item">
-                @Html.ActionLink("Home", "Index", "Home")
-            </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div class="menu-item">
-                    @Html.ActionLink("Chart", "Chart", "Home")
+        <div id="header-low">
+            <nav>
+                <div id="nav">
+                    <div id="nav-bar">
+                        <ul>
+                            <li><a id="errorButton">Error</a></li>
+                            <li id="selected"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="@Url.Action("Chart", "Home")">Chart</a></li>
+                            }
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("FAQ", "Home")">F.A.Q.</a></li>
+                            <div id="account">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="@Url.Action("LogOff", "Account")">Log off</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("LogOn", "Account")">Log on</a></li>
+                                    <li><a href="@Url.Action("Registration", "Account")">Registration</a></li>
+                                }
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            }
-            <div>
-                @Html.ActionLink("About", "About", "Home")
-            </div>
-            <div>
-                @Html.ActionLink("Contact", "Contact", "Home")
-            </div>
-            <div>
-                @Html.ActionLink("F.A.Q.", "FAQ", "Home")
-            </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>
-                </div>
-            }
-            else
-            {
-                <div>
-                    @Html.ActionLink("Log On", "LogOn", "Account")
-                </div>
-                <div>
-                    @Html.ActionLink("Registration", "Registration", "Account")
-                </div>
-            }
-            <div>
-                @Html.ActionLink("Log off", "LogOff", "Account")
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
     <div id="body">
-        @RenderSection("featured", required: false)
-        @RenderBody()
+        <div id="wrap">
+            <div id="content">
+                @RenderBody()
+            </div>
+        </div>
     </div>
     <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+        <div id="footer">
+            <div align="center">Hakaton 2013</div>
+        </div>
     </footer>
-
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
