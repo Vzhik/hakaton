@@ -26,6 +26,15 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/Account/LogOff/">Log Off</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Account/LogOn/">Log On</a></li>
+                                <li><a href="/Account/Registration/">Registration</a></li>
+                            }
                         </ul>
                     </nav>
                 </div>

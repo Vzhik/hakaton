@@ -1,0 +1,8 @@
+D:\Code projects\Хакатон\hakaton\Repositories\obj\Debug\ResolveAssemblyReference.cache
+D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\Repositories.dll.config
+D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\Repositories.dll
+D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\Repositories.pdb
+D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\EntityFramework.dll
+D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\EntityFramework.xml
+D:\Code projects\Хакатон\hakaton\Repositories\obj\Debug\Repositories.dll
+D:\Code projects\Хакатон\hakaton\Repositories\obj\Debug\Repositories.pdb

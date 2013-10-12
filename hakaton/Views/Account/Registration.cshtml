@@ -1,0 +1,37 @@
+﻿@model hakaton.Models.AccountModels.RegisterModel
+@{
+    int i = 0;
+}
+
+<div id="signUpBlock">
+    <form action="/Account/Registration/">
+        <h3><span class="circle icon">1</span>PLEASE FILL IN ALL FIELDS</h3>
+        <div class="sign-up-block" style="padding-bottom: 0">
+            <div class="sign-up-subblock">
+                <div class="left">
+                    <span class="text-label">Email <span class="validation-error">*</span></span>
+                    @Html.EditorFor(model => model.Email, new { tabindex = "1" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+            <div class="sign-up-subblock">
+                <div class="left">
+                    <span class="text-label">Password <span class="validation-error">*</span></span>
+                    @Html.EditorFor(model => model.Password, new { tabindex = 2 })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="sign-up-subblock">
+                <div class="left">
+                    <span class="text-label">Confirm password <span class="validation-error">*</span></span>
+                    @Html.EditorFor(model => model.ConfirmPassword, new { tabindex = 3 })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </div>
+            </div>
+            <input class="log-on-button no-active" type="submit" value="Submit" title="Submit" onclick="" style="margin-top: 30px;" />
+            <span class="field-validation-error" id="errorText">@ViewBag.ErrorText</span>
+            <div class="blocked-block"></div>
+        </div>
+    </form>
+</div>
+

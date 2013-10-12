@@ -1,0 +1,49 @@
+﻿@model hakaton.Models.AccountModels.LogOnModel
+@{
+    //ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="login-page">
+    @using (Html.BeginForm((string)ViewBag.FormAction, "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {     
+        <div class="login-container">
+            @*<div class="logo">
+                </div>*@
+            <div class="login-form">
+                <div class="login-header" style="height: 50px;color: #999; padding-top: 10px; padding-left: 40px;font-size: 24px;">
+                    Type login and password
+                </div>
+                <div class="form">
+                    <div>
+                        @*<div>
+                                <span>Username</span> 
+                            </div>*@
+                        <div class="login-input">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "notification-input-text", @title = "User name" })
+                            <div class="login-validation">
+                                @Html.ValidationMessageFor(m => m.UserName)
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        @*<div>
+                                <span>Password</span>
+                            </div>*@
+                        <div class="login-input">
+                            @Html.PasswordFor(m => m.Password, new { @title = "Password" })
+                            <div class="login-validation">
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+                        </div>
+                    </div>
+                    <input class="log-on-button" type="submit" value="LOG IN" title="Log In" />
+                    <div class="login-bottom">
+                        <input data-val="true" style="color: #777;opacity: 0.3" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true">
+                        <label style="margin-top: -53px;color: #777;opacity: 0.5" for="RememberMe">Remember me?</label>
+                    </div>
+                    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+                </div>
+            </div>
+        </div>  
+    }
+</div>

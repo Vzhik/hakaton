@@ -124,16 +124,26 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JSInquisitorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Enums\AuthorizeEnum.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Authentication\AuthHttpModule.cs" />
+    <Compile Include="Models\Authentication\CustomAuthentication.cs" />
+    <Compile Include="Models\Authentication\IAuthentication.cs" />
+    <Compile Include="Models\Authentication\IUserProvider.cs" />
+    <Compile Include="Models\Authentication\UserIdentity.cs" />
+    <Compile Include="Models\Authentication\UserProvider.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\EventTypes.cs" />
     <Compile Include="Models\Parent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -239,10 +249,18 @@
     <Content Include="Views\Web.config" />
     <Content Include="packages.config" />
     <None Include="readme.txt" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{0E026F38-C81A-4C1E-967C-F2E2AFBF510A}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
