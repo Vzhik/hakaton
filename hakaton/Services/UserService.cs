@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using hakaton.Models;
-using hakaton.Enums;
 using Repositories.Repositories;
 using Repositories.Model;
 using Repositories.Enums;

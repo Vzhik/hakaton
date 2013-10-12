@@ -1,0 +1,42 @@
+﻿@model Guid
+
+@{
+    ViewBag.Title = "FAQ";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <text>
+    <ul>
+        <li>
+            Q: What needs to be done to service began working?<br />
+            A: Include this code to your site: 
+            <p>
+                &lt;script&gt; <br/>
+                ...<br/>
+                @Model.ToString()
+                <br/> &lt;/script&gt; 
+            </p>
+        </li>
+    </ul>
+    </text>
+}
+else
+{
+    <text>
+    <ul>
+        <li>
+            Q: Why do you need this service?<br />
+            A: Our service is designed for the collection of statistical data on the java script errors on your sites.
+        </li>
+        <li>
+            Q:What can the service do?<br />
+            A:The service can collect statistics on errors and to represent it in the form of charts.
+        </li>
+        <li>
+            Q:What we want?<br />
+            A:We want to help you fix bugs on your sites.
+        </li>
+    </ul>
+    </text>
+}
