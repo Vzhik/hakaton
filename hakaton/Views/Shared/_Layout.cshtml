@@ -9,6 +9,7 @@
         @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/JSInquisitor.js");
+
     </head>
     <body>
         <header>
@@ -24,6 +25,10 @@
                         <ul id="menu">
                             <li><input type="button" value="Error" id="errorButton"/></li>
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/Home/Chart/">Chart</a></li>
+                            }
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li>@Html.ActionLink("F.A.Q.", "FAQ", "Home")</li>
