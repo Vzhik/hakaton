@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Repositories.Model;
 using System.Data.Entity;
 using Repositories.Enums;
+using Repositories.EntityModel;
 
 namespace Repositories.Repositories
 {

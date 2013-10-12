@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using hakaton.Services;
-using Repositories.Model;
+using Repositories.EntityModel;
 
 namespace hakaton.Models.Authentication
 {

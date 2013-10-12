@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Repositories.Repositories;
-using Repositories.Model;
 using Repositories.Enums;
 using System.Security.Cryptography;
 using System.Text;
+using Repositories.EntityModel;
 
 namespace hakaton.Services
 {

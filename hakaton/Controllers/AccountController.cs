@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Repositories.Model;
 using hakaton.Models;
 using hakaton.Models.Authentication;
 using hakaton.Models.AccountModels;
 using hakaton.Services;
+using Repositories.EntityModel;
 
 namespace hakaton.Controllers
 {

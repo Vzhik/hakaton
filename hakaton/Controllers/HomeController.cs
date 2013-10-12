@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using hakaton.Models;
 using hakaton.Models.Authentication;
 using hakaton.Services;
-using Repositories.Model;
+using Repositories.EntityModel;
 
 namespace hakaton.Controllers
 {

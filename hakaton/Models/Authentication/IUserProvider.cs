@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Repositories.Model;
+using Repositories.EntityModel;
 
 namespace hakaton.Models.Authentication
 {

@@ -47,17 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\CreateUserEnum.cs" />
-    <Compile Include="Model\Model.Designer.cs">
+    <Compile Include="EntityModel\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\EventTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ErrorsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="Model\Model.edmx">
+    <EntityDeploy Include="EntityModel\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
