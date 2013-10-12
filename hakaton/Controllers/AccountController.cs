@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Repositories.Model;
 using hakaton.Models;
 using hakaton.Models.Authentication;
+using hakaton.Models.AccountModels;
+using hakaton.Services;
 
 namespace hakaton.Controllers
 {
@@ -46,7 +48,7 @@ namespace hakaton.Controllers
 
         public PartialViewResult LogOn(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl; 
             return PartialView("LogOn");
         }
 
@@ -55,6 +57,7 @@ namespace hakaton.Controllers
         {
             try
             {
+                ModelState.Clear();
                 if (ModelState.IsValid)
                 {
                     if (Auth.Login(model.UserName, model.Password, true) != null)
@@ -84,21 +87,36 @@ namespace hakaton.Controllers
 
         public ActionResult Registration()
         {
-            return View(new User());
+            return View(new RegisterModel());
         }
 
         //
         // POST: /Customers/Create
 
         [HttpPost]
-        public ActionResult Registration(User user)
+        public ActionResult Registration(RegisterModel user)
         {
             if (ModelState.IsValid)
             {
                 //CustomerService.AddUser(user);
-                return RedirectToAction("Index");
-            }
+                var res = UserService.CreateUser(user.Email, user.Password);
+                if (res == Repositories.Enums.CreateUserEnum.Succeeded)
+                {
+                    Auth.Login(user.Email, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                if (res == Repositories.Enums.CreateUserEnum.EmailExist)
+                {
+                    ModelState.AddModelError("", "User with this email already exists");
+                }
+                if (res == Repositories.Enums.CreateUserEnum.Failed)
+                {
+                    ModelState.AddModelError("", "An error occurred while saving the user");
+                }
 
+
+            }
+            
             return View(user);
         }
 

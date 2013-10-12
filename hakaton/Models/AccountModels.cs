@@ -43,9 +43,6 @@ namespace hakaton.Models.AccountModels
 
     public class RegisterModel
     {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]

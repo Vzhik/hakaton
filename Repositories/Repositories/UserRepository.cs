@@ -16,19 +16,18 @@ namespace Repositories.Repositories
             return _context.Users.SingleOrDefault(p => p.Email == email);
         }
 
-        public CreateUserEnum CreateUser(string name, string password)
+        public bool CreateUser(string name, Guid password)
         {
             try
             {
-                if(GetUserByEmail(name) != null) return CreateUserEnum.EmailExist;
                 _context.Users.AddObject(new User() {Email = name, Password = password, Id = Guid.NewGuid()});
                 _context.SaveChanges();
             }
             catch (Exception)
             {
-                return CreateUserEnum.Failed;
+                return false;
             }
-            return CreateUserEnum.Succeeded;
+            return true;
         }
     }
 }

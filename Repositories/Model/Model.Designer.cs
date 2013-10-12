@@ -116,7 +116,7 @@ namespace Repositories.Model
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="password">Initial value of the Password property.</param>
-        public static User CreateUser(global::System.Guid id, global::System.String email, global::System.String password)
+        public static User CreateUser(global::System.Guid id, global::System.String email, global::System.Guid password)
         {
             User user = new User();
             user.Id = id;
@@ -184,7 +184,7 @@ namespace Repositories.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Password
+        public global::System.Guid Password
         {
             get
             {
@@ -194,13 +194,13 @@ namespace Repositories.Model
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
         }
-        private global::System.String _Password;
-        partial void OnPasswordChanging(global::System.String value);
+        private global::System.Guid _Password;
+        partial void OnPasswordChanging(global::System.Guid value);
         partial void OnPasswordChanged();
 
         #endregion
