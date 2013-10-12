@@ -1,11 +1,9 @@
 ﻿@model hakaton.Models.AccountModels.RegisterModel
-@{
-    int i = 0;
-}
 
 <div id="signUpBlock">
-    <form action="/Account/Registration/">
-        <h3><span class="circle icon">1</span>PLEASE FILL IN ALL FIELDS</h3>
+    <form action="/Account/Registration/" method="post">
+        <h3><span class="circle icon"></span>PLEASE FILL IN ALL FIELDS</h3>
+        <div class="error">@Html.ValidationSummary(true, "Registration was unsuccessful. Please correct the errors and try again.")</div>
         <div class="sign-up-block" style="padding-bottom: 0">
             <div class="sign-up-subblock">
                 <div class="left">
