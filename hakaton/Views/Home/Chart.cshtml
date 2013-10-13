@@ -11,45 +11,40 @@
         margin: 5px;
         vertical-align: top;
     }
+
     .left-div
     {
         width: 100px;
-        margin-left: 100px
+        margin-left: 100px;
     }
+
     .right-div
     {
-        margin-top: -50px
+        margin-top: -50px;
     }
 </style>
-@if (User.Identity.IsAuthenticated)
-{
-    <script type="text/javascript">
-        google.load('visualization', '1', { 'packages': ['coreChart'] });
-    </script>
-    <input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
-    
-    <div>
+<script type="text/javascript">
+    google.load('visualization', '1', { 'packages': ['coreChart'] });
+</script>
+<input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
+
+<div id="sidebar">
     <div class="left-div">
-        <input type="radio" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />For
-        3 days<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="7" checked="true"
-            title="For 1 week" />For 1 week<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />For
-        1 month<br />
+        <input type="radio" id="radio1" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />
+        <label for="radio1">For 3 days </label>
+        <input type="radio" id="radio2" name="group1" class="periodOfBatchChart" value="7" checked="true" title="For 1 week" />
+        <label for="radio2">For 1 week </label>
+        <input type="radio" id="radio3" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />
+        <label style="padding-left: 3px;" for="radio3">For 1 month</label>
     </div>
+</div>
+
+<div id="content-chart">
     <div class="right-div">
         <div id="chart-window">
         </div>
     </div>
-    </div>
+</div>
 
-    <div id="div-for-table">
-    </div>
-
-
-}
-else
-{
-    <h1>
-        You must log in if you want to use this service!</h1>
-}
+<div id="div-for-table">
+</div>
