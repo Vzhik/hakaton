@@ -13,20 +13,23 @@ namespace Repositories.Repositories
 
         public void AddError(ErrorModel error)
         {
-            Event[] events = new Event[error.Events.Length];
-            for (int i = 0; i < error.Events.Length; i++)
-            {
-                events[i] = new Event();
-                events[i].EventType = (int)error.Events[i].EventType;
-                events[i].Target = error.Events[i].Target;
-                events[i].TimeAfterStart = error.Events[i].TimeAfterStart;
-                events[i].ErrorId = error.Id;
-                events[i].Id = error.Events[i].Id;
-            }
-            var baseError = createErrorBase(error.UserId, error.Message);
-            var errorDb = new Error() { ErrorId = Guid.NewGuid(), Agent = error.Agent, FileUrl = error.FileUrl, PageUrl = error.PageUrl, Line = error.Line, Stack = error.Stack, ErrorBaseId = baseError.ErrorBaseId, Time = DateTime.Now };
             try
             {
+                Event[] events = new Event[error.Events.Length];
+                var baseError = createErrorBase(error.UserId, error.Message);
+
+                var errorDb = new Error() { ErrorId = Guid.NewGuid(), Agent = error.Agent, FileUrl = error.FileUrl, PageUrl = error.PageUrl, Line = error.Line, Stack = error.Stack, ErrorBaseId = baseError.ErrorBaseId, Time = DateTime.Now };
+
+                for (int i = 0; i < error.Events.Length; i++)
+                {
+                    events[i] = new Event();
+                    events[i].EventType = (int)error.Events[i].EventType;
+                    events[i].Target = error.Events[i].Target;
+                    events[i].TimeAfterStart = error.Events[i].TimeAfterStart;
+                    events[i].ErrorId = errorDb.ErrorId;
+                    events[i].Id = error.Events[i].Id;
+                    _context.Events.AddObject(events[i]);
+                }
                 _context.Errors.AddObject(errorDb);
                 _context.SaveChanges();
             }
