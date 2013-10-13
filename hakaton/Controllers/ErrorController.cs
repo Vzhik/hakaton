@@ -60,6 +60,7 @@ namespace hakaton.Controllers
         {
             var errors = ErrorService.GetErrorsTable(errorId, period);
             return PartialView(errors);
+            ;
         }
 
         [Authorize]

@@ -5,14 +5,7 @@
 }
 
 <fieldset>
-    <legend>Error</legend>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Message)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Message)
-    </div>
+    <legend><strong>@Html.DisplayFor(model => model.Message)</strong></legend>
 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.Agent)
