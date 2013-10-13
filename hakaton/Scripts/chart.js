@@ -49,7 +49,7 @@ function drawTable() {
     $.ajax({
         url: "/Error/GetErrorsTable",
         type: "POST",
-        data: JSON.stringify({ userId: JSInquisitorId, period: parseInt($('.periodOfBatchChart:checked').val())}),
+        data: JSON.stringify({ period: parseInt($('.periodOfBatchChart:checked').val())}),
         contentType: 'application/json; charset=utf-8',
         success: function(html)
         {

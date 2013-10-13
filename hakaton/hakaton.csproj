@@ -270,6 +270,7 @@
     <Content Include="Views\Error\GetErrorsTable.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\GetErrorTable.cshtml" />
+    <Content Include="Views\Error\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -39,9 +39,9 @@ namespace hakaton.Controllers
         // GET: /Error/
         [Authorize]
         [HttpPost]
-        public ActionResult GetErrorsTable(Guid userId, int period)
+        public ActionResult GetErrorsTable(int period)
         {
-            var errors = ErrorService.GetErrorsBase(userId, period);
+            var errors = ErrorService.GetErrorsBase(CurrentUser.Id, period);
             return PartialView(errors);
         }
         
@@ -60,6 +60,13 @@ namespace hakaton.Controllers
         {
             var errors = ErrorService.GetErrorsTable(errorId, period);
             return PartialView(errors);
+        }
+
+        [Authorize]
+        public ActionResult Details(Guid id)
+        {
+            //268b1442-eb74-42a6-925f-86fa3532bc83
+            return View(ErrorService.GetErrorDetails(id));
         }
 
     }

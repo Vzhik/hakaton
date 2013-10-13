@@ -85,5 +85,22 @@ namespace hakaton.Services
             return point;
         }
 
+        public static ErrorModel GetErrorDetails(Guid errorid)
+        {
+            var repo = new ErrorsRepository();
+            var error = repo.GetErrorById(errorid);
+            if (error == null) return null;
+            var errorBase = repo.GetBaseErrorById(error.ErrorBaseId);
+            var res = new ErrorModel() { Agent = error.Agent, FileUrl = error.FileUrl, Id = error.ErrorId, Line = error.Line, Message = errorBase.Message, PageUrl = error.PageUrl, Stack = error.Stack, Time = error.Time };
+            var events = new EventModel[error.Events.Count];
+            int i =0;
+            foreach (var ev in error.Events.ToList().OrderBy(p => p.TimeAfterStart))
+            {
+                events[i] = new EventModel() { EventType = (EventTypes)ev.EventType, Target = ev.Target, TimeAfterStart = ev.TimeAfterStart };
+                i++;
+            }
+            res.Events = events;
+            return res;
+        }
     }
 }

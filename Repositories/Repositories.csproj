@@ -52,6 +52,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Enums\CreateUserEnum.cs" />
+    <Compile Include="Models\ErrorDetailsModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\EventTypes.cs" />

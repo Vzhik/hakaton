@@ -11,7 +11,7 @@ namespace Repositories.Models
         public string Message { get; set; } //base. add index
         public string Agent { get; set; }
         public string FileUrl { get; set; } 
-        public int Line { get; set; } 
+        public int? Line { get; set; } 
         public string PageUrl { get; set; }
         public Guid UserId { get; set; } //base
         public string Stack { get; set; }

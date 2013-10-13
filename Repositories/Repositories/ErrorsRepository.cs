@@ -60,5 +60,10 @@ namespace Repositories.Repositories
         {
             return _context.ErrorBases.SingleOrDefault(p => p.ErrorBaseId == errorBaseId);
         }
+
+        public Error GetErrorById(Guid id)
+        {
+            return _context.Errors.SingleOrDefault(p => p.ErrorId == id);
+        }
     }
 }
