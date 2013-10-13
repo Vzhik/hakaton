@@ -1,0 +1,91 @@
+﻿@model Repositories.Models.ErrorModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ErrorModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Message)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Agent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Agent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FileUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileUrl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Line)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Line)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PageUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PageUrl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Stack)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Stack)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time)
+    </div>
+    
+        @if (Model.Events.Length > 0)
+        {
+    <table>
+        <tr>
+            <td>
+                Event type
+            </td>
+            <td>
+                Target
+            </td>
+            <td>
+                Time after start (milisecond)
+            </td>
+        </tr>
+            @foreach (var ev in Model.Events)
+            {
+            <tr>
+                <td>@ev.EventType.ToString()</td>
+                <td>@ev.Target</td>
+                <td>@ev.TimeAfterStart</td>
+            </tr>
+            }
+        
+    </table>
+        }
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
