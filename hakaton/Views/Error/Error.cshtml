@@ -5,29 +5,31 @@
 @Scripts.Render("~/Scripts/ErrorPage.js")
 
 
-    <script type="text/javascript">
-        google.load('visualization', '1', { 'packages': ['coreChart'] });
-    </script>
-    <input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
-    <input id="errorId" type="hidden" value="@ViewBag.Id"/>
+<script type="text/javascript">
+    google.load('visualization', '1', { 'packages': ['coreChart'] });
+</script>
+<input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
+<input id="errorId" type="hidden" value="@ViewBag.Id"/>
 
-    
-    <div>
-    <div class="left-div">
-        <input type="radio" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />For
-        3 days<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="7" checked="true"
-            title="For 1 week" />For 1 week<br />
-        <input type="radio" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />For
-        1 month<br />
+
+<div>
+    <div id="sidebar-error">
+        <div class="left-div">
+            <input type="radio" id="radio1" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />
+            <label for="radio1">For 3 days </label>
+            <input type="radio" id="radio2" name="group1" class="periodOfBatchChart" value="7" checked="true" title="For 1 week" />
+            <label for="radio2">For 1 week </label>
+            <input type="radio" id="radio3" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />
+            <label style="padding-left: 3px;" for="radio3">For 1 month</label>
+        </div>
     </div>
     <div class="right-div">
         <div id="chart-window">
         </div>
     </div>
-    </div>
+</div>
 
-    <div id="div-for-table">
-    </div>
+<div id="div-for-table">
+</div>
 
 

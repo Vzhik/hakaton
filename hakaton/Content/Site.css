@@ -444,6 +444,16 @@ section
     text-align: justify;
 }
 
+#sidebar-error
+{
+    margin: 0;
+    width: 100px;
+    padding: 10px;
+    float: right;
+    font-size: 0.9em;
+    text-align: justify;
+}
+
 #content-chart
 {
     background: #ffffff;
