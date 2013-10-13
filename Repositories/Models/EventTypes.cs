@@ -8,16 +8,16 @@ namespace Repositories.Models
     public enum EventTypes
     {
         click = 0,
-        focus,
-        blur,
-        keydown,
-        keyup,
-        keypress,
-        load,
-        submit,
-        mousedown,
-        mouseup,
-        mouseenter,
-        mouseleave
+        focus = 1,
+        blur = 2,
+        keydown = 3,
+        keyup = 4,
+        keypress = 5,
+        load = 6,
+        submit = 7,
+        mousedown = 8,
+        mouseup = 9,
+        mouseenter = 10,
+        mouseleave = 11
     }
 }

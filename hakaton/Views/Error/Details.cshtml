@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Details";
 }
-
+@Scripts.Render("~/Scripts/details.js")
+@Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
+@Styles.Render("~/Content/themes/base/jquery.ui.dialog.css")
 <fieldset>
     <legend><strong>@Html.DisplayFor(model => model.Message)</strong></legend>
 
@@ -51,6 +53,22 @@
 
     @if (Model.Events.Length > 0)
     {
+        <div>
+            <input type="checkbox" class="typeCheckbox" id="click" checked="checked" />
+            <label for="click">click</label>
+
+            <input type="checkbox" class="typeCheckbox" id="focus" checked="checked" />
+            <label for="focus">focus</label>
+
+            <input type="checkbox" class="typeCheckbox" id="blur" checked="checked" />
+            <label for="blur">blur</label>
+
+            <input type="checkbox" class="typeCheckbox" id="keypress" checked="checked" />
+            <label for="keypress">keypress</label>
+
+            <input type="checkbox" class="typeCheckbox" id="submit" checked="checked" />
+            <label for="submit">submit</label>
+        </div>
         <table class="features-table">
             <thead>
                 <tr>
@@ -65,8 +83,15 @@
             @foreach (var ev in Model.Events)
             {
                 <tr>
-                    <td>@ev.EventType.ToString()</td>
-                    <td>@ev.Target</td>
+                    <td class="eventType">@ev.EventType.ToString()</td>
+                    <td>
+                        @(ev.Target.Length >200 ? ev.Target.Substring(0, 150) + "..." : ev.Target)
+                        @if(ev.Target.Length >200)
+                        {
+                            <span class="showValue">show more</span>
+                            <div class="dialog" style="display: none; width: 400px">@ev.Target</div>
+                        }
+                    </td>
                     <td>@ev.TimeAfterStart</td>
                 </tr>
             }

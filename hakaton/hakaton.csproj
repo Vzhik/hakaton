@@ -213,6 +213,7 @@
     <Content Include="Images\gradtop.gif" />
     <Content Include="Images\uncheck.png" />
     <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\details.js" />
     <Content Include="Scripts\ErrorPage.js" />
     <Content Include="Scripts\DataTables.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />

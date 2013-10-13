@@ -20,9 +20,16 @@ function getError(msg, url, line) {
 var events = new Array();
 var startTime = Date.now();
 $(document).ready(function () {
-    $(document).bind('click mousedown mouseup', function (event) {
-        events.push({ EventType: event.type, Target: $('<div/>').html($(event.target).clone()).html(), TimeAfterStart: Date.now() - startTime });
+    $(document).bind('click keypress', function (event) {
+        addEvent(event);
     });
+    $("form").submit(addEvent);
+    $("input").bind('focus blur', function () { addEvent(event) });
+
+    function addEvent(event) {
+        events.push({ EventType: event.type, Target: $('<div/>').html($(event.target).clone()).html(), TimeAfterStart: Date.now() - startTime });
+    }
+
 });
 
 

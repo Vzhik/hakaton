@@ -42,6 +42,8 @@ namespace hakaton.Controllers
         public ActionResult GetErrorsTable(int period)
         {
             var errors = ErrorService.GetErrorsBase(CurrentUser.Id, period);
+            //errors.OrderByDescending(p => Int32.Parse(p["count"]));
+            errors = (from p in errors orderby Int32.Parse(p["count"]) descending select p).ToList();
             return PartialView(errors);
         }
         
