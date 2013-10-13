@@ -27,7 +27,8 @@
     google.load('visualization', '1', { 'packages': ['coreChart'] });
 </script>
 <input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
-
+@if (ViewBag.JSON != "[]")
+{
 <div id="sidebar">
     <div class="left-div">
         <input type="radio" id="radio1" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />
@@ -45,6 +46,10 @@
         </div>
     </div>
 </div>
-
+}
+else
+{
+    <div>There are no errors.</div>
+}
 <div id="div-for-table">
 </div>

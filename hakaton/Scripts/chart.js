@@ -9,40 +9,42 @@ function drawBatchContractsChart() {
     var mass = ['x'];
     var max = 5;
     var batchChartValues = JSON.parse($('#jsonHidden').val());
-    $.each(batchChartValues, function () {
-        mass.push(this.id);
-    });
-    data.push(mass);
-    var count = batchChartValues[0].mass.length;
-    var period = parseInt($('.periodOfBatchChart:checked').val());
-    if (period < 3) period = 3;
-    if (period > 31) period = 31;
-    var i = 31 - period;
-    for (; i < count; i++) {
-        var date = new Date();
-        date.setDate(date.getDate() - count + i + 1);
-        var formDate = window.GetFormattedDate(date);
-        mass = [formDate];
+    if (batchChartValues.length > 0) {
         $.each(batchChartValues, function () {
-            if (this.mass[i] > max) {
-                max = this.mass[i];
-            }
-            mass.push(this.mass[i]);
+            mass.push(this.id);
         });
         data.push(mass);
-    }
+        var count = batchChartValues[0].mass.length;
+        var period = parseInt($('.periodOfBatchChart:checked').val());
+        if (period < 3) period = 3;
+        if (period > 31) period = 31;
+        var i = 31 - period;
+        for (; i < count; i++) {
+            var date = new Date();
+            date.setDate(date.getDate() - count + i + 1);
+            var formDate = window.GetFormattedDate(date);
+            mass = [formDate];
+            $.each(batchChartValues, function () {
+                if (this.mass[i] > max) {
+                    max = this.mass[i];
+                }
+                mass.push(this.mass[i]);
+            });
+            data.push(mass);
+        }
 
-    var googleData = google.visualization.arrayToDataTable(data);
+        var googleData = google.visualization.arrayToDataTable(data);
 
-    var showEvery = period < 7 ? 1 : period < 10 ? 2 : 4;
-    // Create and draw the visualization.
-    new google.visualization.LineChart(document.getElementById('chart-window')).draw(googleData,
+        var showEvery = period < 7 ? 1 : period < 10 ? 2 : 4;
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('chart-window')).draw(googleData,
     { //fontSize: 10,
         width: 600,
         height: 300,
         vAxis: { maxValue: max, title: 'Errors' },
         hAxis: { slantedText: false, maxAlternation: 4, showTextEvery: showEvery }
     });
+    }
 }
 
 function drawTable() {
