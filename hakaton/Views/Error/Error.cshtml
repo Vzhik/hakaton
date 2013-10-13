@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Chart";
+}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+@Scripts.Render("~/Scripts/ErrorPage.js")
+
+
+    <script type="text/javascript">
+        google.load('visualization', '1', { 'packages': ['coreChart'] });
+    </script>
+    <input id="jsonHidden" type="hidden" value="@ViewBag.JSON"/>
+    <input id="errorId" type="hidden" value="@ViewBag.Id"/>
+
+    
+    <div>
+    <div class="left-div">
+        <input type="radio" name="group1" class="periodOfBatchChart" value="3" title="For 3 days" />For
+        3 days<br />
+        <input type="radio" name="group1" class="periodOfBatchChart" value="7" checked="true"
+            title="For 1 week" />For 1 week<br />
+        <input type="radio" name="group1" class="periodOfBatchChart" value="31" title="For 1 month" />For
+        1 month<br />
+    </div>
+    <div class="right-div">
+        <div id="chart-window">
+        </div>
+    </div>
+    </div>
+
+    <div id="div-for-table">
+    </div>
+
+

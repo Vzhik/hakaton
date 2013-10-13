@@ -145,6 +145,7 @@
     <Compile Include="Models\Authentication\UserIdentity.cs" />
     <Compile Include="Models\Authentication\UserProvider.cs" />
     <Compile Include="Models\ChartPoints.cs" />
+    <Compile Include="Models\ErrorPointsModel.cs" />
     <Compile Include="Models\Parent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ErrorService.cs" />
@@ -210,6 +211,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\gradtop.gif" />
     <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\ErrorPage.js" />
     <Content Include="Scripts\DataTables.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -264,6 +266,8 @@
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\Chart.cshtml" />
     <Content Include="Views\Error\GetErrorsTable.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Error\GetErrorTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

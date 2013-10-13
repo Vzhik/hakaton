@@ -67,7 +67,7 @@ namespace hakaton.Controllers
         {
             var js = new JavaScriptSerializer();
 
-            ViewBag.JSON = js.Serialize(ErrorService.GetChartPoints(CurrentUser.Id));
+            ViewBag.JSON = js.Serialize(ErrorService.GetChartPointsBase(CurrentUser.Id));
             return View("Chart");
         }
 

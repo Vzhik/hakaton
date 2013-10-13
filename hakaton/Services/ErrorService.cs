@@ -17,10 +17,10 @@ namespace hakaton.Services
             repo.AddError(error);
         }
 
-        public static List<Dictionary<string, string>> GetErrors(Guid userId, int period)
+        public static List<Dictionary<string, string>> GetErrorsBase(Guid userId, int period)
         {
             var repo = new ErrorsRepository();
-            var error = repo.GetErrors(userId, period);
+            var error = repo.GetErrors(userId);
             var res = new List<Dictionary<string, string>>();
             for (int i = 0; i < error.Count; i++)
             {
@@ -33,10 +33,10 @@ namespace hakaton.Services
             return res;
         }
 
-        public static List<ChartPoints> GetChartPoints(Guid userId)
+        public static List<ChartPoints> GetChartPointsBase(Guid userId)
         {
             var repo = new ErrorsRepository();
-            var error = repo.GetErrors(userId, 31);
+            var error = repo.GetErrors(userId);
             var res = new List<ChartPoints>();
             for (int i = 0; i < error.Count; i++)
             {
@@ -50,6 +50,39 @@ namespace hakaton.Services
                 res.Add(points);
             }
             return res;
+        }
+
+        public static List<Dictionary<string, string>> GetErrorsTable(Guid errorBaseId, int period)
+        {
+            var res = new List<Dictionary<string, string>>();
+            var repo = new ErrorsRepository();
+            var errorBase = repo.GetBaseErrorById(errorBaseId);
+            foreach (var error in errorBase.Errors)
+            {
+                var dict = new Dictionary<string, string>();
+                if (error.Time >= DateTime.Now.AddDays(-period))
+                {
+                    dict.Add("Agent", error.Agent);
+                    dict.Add("FileUrl", error.FileUrl);
+                    dict.Add("PageUrl", error.PageUrl);
+                    dict.Add("Line", error.Line.ToString());
+                    dict.Add("Time", error.Time.ToLongTimeString());
+                    dict.Add("Message", errorBase.Message);
+                    dict.Add("Id", error.ErrorId.ToString());
+                }
+                res.Add(dict);
+            }
+            return res;
+
+        }
+
+        public static ChartPoints GetChartPoints(Guid userId, Guid errorBaseId)
+        {
+            var points = GetChartPointsBase(userId);
+            var repo = new ErrorsRepository();
+            var errorBase = repo.GetBaseErrorById(errorBaseId);
+            ChartPoints point = points.SingleOrDefault(p => p.id == errorBase.Message);
+            return point;
         }
 
     }

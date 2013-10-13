@@ -1,0 +1,47 @@
+﻿@model List<Dictionary<string, string>>
+
+@{
+    ViewBag.Title = "GetErrorsTable";
+}
+Statistic of @Model[0]["Message"]
+<table>
+<tr>
+    <td>
+        Agent
+    </td>
+    <td>
+        File url
+    </td>
+    <td>
+        Page url
+    </td>
+    <td>
+        Line
+    </td>
+    <td>
+        Time
+    </td>
+</tr>
+@foreach (var error in Model)
+{
+    <tr>
+        <td>
+            @error["Agent"]
+        </td>
+        <td>
+            @error["FileUrl"]
+        </td>
+        <td>
+            @error["PageUrl"]
+        </td>
+        <td>
+            @error["Line"]
+        </td>
+        <td>
+            @error["Time"]
+            <input type="hidden" value="@error["Id"]" class="errorBaseId"/>
+        </td>
+
+    </tr>
+}
+</table>
