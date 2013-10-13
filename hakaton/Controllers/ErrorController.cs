@@ -65,6 +65,7 @@ namespace hakaton.Controllers
         [Authorize]
         public ActionResult Details(Guid id)
         {
+            ViewBag.BackToList = ErrorService.GetErrorBaseIdByErrorId(id).ToString();
             //268b1442-eb74-42a6-925f-86fa3532bc83
             return View(ErrorService.GetErrorDetails(id));
         }

@@ -93,6 +93,14 @@ h4
     color: #ffffff;
 }
 
+#logo-text>a {
+    color: white;
+}
+
+#logo-text>a:hover {
+    color: white;
+}
+
 #logo-slogan
 {
     position: absolute;
@@ -477,4 +485,19 @@ section
     background: #2a2a2a;
     color: white;
     border-radius: 3px;
+}
+
+.display-label {
+    font-weight: bold;
+}
+
+.display-field {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.stack {
+    width: 50%;
+    text-align: left;
+    margin-left: 20px;
 }

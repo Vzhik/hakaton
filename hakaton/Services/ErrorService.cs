@@ -76,6 +76,12 @@ namespace hakaton.Services
 
         }
 
+        public static Guid GetErrorBaseIdByErrorId(Guid id)
+        {
+            var repo = new ErrorsRepository();
+            return repo.GetErrorById(id).ErrorBaseId;
+        }
+
         public static ChartPoints GetChartPoints(Guid userId, Guid errorBaseId)
         {
             var points = GetChartPointsBase(userId);
