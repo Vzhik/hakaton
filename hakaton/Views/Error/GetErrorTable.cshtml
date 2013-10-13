@@ -28,7 +28,7 @@
         </thead>
         @foreach (var error in Model)
         {
-            <tr>
+            <tr onclick="location.href='/Error/Details/@error["Id"]'">
                 <td>
                     @error["Agent"]
                 </td>
@@ -43,7 +43,6 @@
                 </td>
                 <td>
                     @error["Time"]
-                    <input type="hidden" value="@error["Id"]" class="errorBaseId"/>
                 </td>
 
             </tr>
