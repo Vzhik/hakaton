@@ -37,9 +37,17 @@ $(document).ready(function () {
 
 //user's code move to layout
 $(document).ready(function () {
-    $("#errorButton").click(function () {
+    $("#errorButton1").click(function () {
         var qwe = a;
-        throw 123;
+    });
+    $("#errorButton2").click(function () {
+        throw "Our test exception";
+    });
+    $("#errorButton3").click(function () {
+        throw "Initializing is failed";
+    });
+    $("#errorButton4").click(function () {
+        throw "Epic fail - there are no pizza";
     });
 });
 

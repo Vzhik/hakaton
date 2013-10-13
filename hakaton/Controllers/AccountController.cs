@@ -105,7 +105,9 @@ namespace hakaton.Controllers
                     Auth.Login(user.Email, false);
                     var userDB = UserService.GetUserByEmail(user.Email);
                     SenderSMTP.SendMessage(user.Email, "Congratulations, you've signed up for the service JsInquisitor",
-                        "Now you can start working with the service.\r\nTo do this you need to include the following code to your site:\r\n<script>\r\n...\r\n" + userDB.Id.ToString() + "\r\n</script>");
+                        "Now you can start working with the service.\r\nTo do this you need to include the following code to your site:" +
+                        "\r\n<script type=\"text/javascript\" src=\"http://ourwebsite/scripts/JsInquisitor.js\">\r\n" +
+                        "JSInquisitorId = " + userDB.Id.ToString() + "\r\n</script>");
                     return RedirectToAction("Index", "Home");
                 }
                 if (res == Repositories.Enums.CreateUserEnum.EmailExist)
