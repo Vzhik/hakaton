@@ -57,7 +57,7 @@ namespace hakaton.Services
             var res = new List<Dictionary<string, string>>();
             var repo = new ErrorsRepository();
             var errorBase = repo.GetBaseErrorById(errorBaseId);
-            foreach (var error in errorBase.Errors)
+            foreach (var error in errorBase.Errors.OrderBy(p=>p.Time))
             {
                 var dict = new Dictionary<string, string>();
                 if (error.Time >= DateTime.Now.AddDays(-period))
@@ -66,7 +66,7 @@ namespace hakaton.Services
                     dict.Add("FileUrl", error.FileUrl);
                     dict.Add("PageUrl", error.PageUrl);
                     dict.Add("Line", error.Line.ToString());
-                    dict.Add("Time", error.Time.ToLongTimeString());
+                    dict.Add("Time", error.Time.ToLongTimeString() + error.Time.ToLongDateString());
                     dict.Add("Message", errorBase.Message);
                     dict.Add("Id", error.ErrorId.ToString());
                 }

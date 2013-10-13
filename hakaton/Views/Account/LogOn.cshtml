@@ -10,22 +10,26 @@
             <div>
                 <div>
                     <span>Email</span>
-                    @Html.EditorFor(model => model.UserName, new { tabindex = 1 })
-                    @Html.ValidationMessageFor(model => model.UserName)
+                    <div>
+                        @Html.EditorFor(model => model.UserName, new { tabindex = 1 })
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
                 </div>
             </div>
             <div>
                 <div>
                     <span>Password</span>
-                    @Html.EditorFor(model => model.Password, new { tabindex = 2 })
-                    @Html.ValidationMessageFor(model => model.Password)
+                    <div>
+                        @Html.EditorFor(model => model.Password, new { tabindex = 2 })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
                 </div>
             </div>
             <div style="margin-top: 10px;">
                 <input data-val="true" style="color: #777; opacity: 0.3" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true">
                 <label style="color: #777; opacity: 0.5" for="RememberMe">Remember me?</label>
             </div>
-            <input type="submit" value="Submit" title="Log in" onclick="" style="margin-top: 15px;" />
+            <input id="account-button" type="submit" value="Submit" title="Log in" onclick="" style="margin-top: 15px;" />
             @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
         </div>
     }

@@ -6,3 +6,11 @@ D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\EntityFramework.d
 D:\Code projects\Хакатон\hakaton\Repositories\bin\Debug\EntityFramework.xml
 D:\Code projects\Хакатон\hakaton\Repositories\obj\Debug\Repositories.dll
 D:\Code projects\Хакатон\hakaton\Repositories\obj\Debug\Repositories.pdb
+D:\JS Inquisitor\hakaton\Repositories\bin\Debug\Repositories.dll.config
+D:\JS Inquisitor\hakaton\Repositories\bin\Debug\Repositories.dll
+D:\JS Inquisitor\hakaton\Repositories\bin\Debug\Repositories.pdb
+D:\JS Inquisitor\hakaton\Repositories\bin\Debug\EntityFramework.dll
+D:\JS Inquisitor\hakaton\Repositories\bin\Debug\EntityFramework.xml
+D:\JS Inquisitor\hakaton\Repositories\obj\Debug\Repositories.csprojResolveAssemblyReference.cache
+D:\JS Inquisitor\hakaton\Repositories\obj\Debug\Repositories.dll
+D:\JS Inquisitor\hakaton\Repositories\obj\Debug\Repositories.pdb

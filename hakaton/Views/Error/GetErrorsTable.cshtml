@@ -4,26 +4,27 @@
     ViewBag.Title = "GetErrorsTable";
 }
 
-<table>
-<tr>
-    <td>
-        Message
-    </td>
-    <td>
-        Count
-    </td>
-</tr>
-@foreach (var error in Model)
-{
-    <tr>
-        <td>
-            @error["message"]
-        </td>
-        <td>
-            @error["count"]
-            <input type="hidden" value="@error["id"]" class="errorBaseId"/>
-        </td>
+<table class="features-table">
+    <thead>
+        <tr>
+            <td>
+                Message
+            </td>
+            <td>
+                Count
+            </td>
+        </tr>
+    </thead>
 
-    </tr>
-}
+    @foreach (var error in Model)
+    {
+        <tr onclick="location.href='/Error/Error/@error["id"]'">
+            <td>
+                @error["message"]
+            </td>
+            <td>
+                @error["count"]
+            </td>
+        </tr>
+    }
 </table>

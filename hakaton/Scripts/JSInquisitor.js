@@ -13,7 +13,7 @@ window.onerror = function (msg, url, line) {
 function getError(msg, url, line) {
     JSON.stringify(
     {
-        Message: msg, Agent: navigator.userAgent, Url: url, Line: line, PageUrl: window.location.href, UserId: "7f9e812d-807b-4773-a9ce-854f11c408c3"
+        Message: msg, Agent: navigator.userAgent, Url: url, Line: line, PageUrl: window.location.href, UserId: JSInquisitorId
     });
 }
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 //user's code move to layout
 $(document).ready(function () {
-    $("#error-button").click(function () {
+    $("#errorButton").click(function () {
         var qwe = a;
         throw 123;
     });

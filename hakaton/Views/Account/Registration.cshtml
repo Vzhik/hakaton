@@ -8,25 +8,31 @@
             <div>
                 <div>
                     <span>Email <span>*</span></span>
-                    @Html.EditorFor(model => model.Email, new { tabindex = "1" })
-                    @Html.ValidationMessageFor(model => model.Email)
+                    <div>
+                        @Html.EditorFor(model => model.Email, new { tabindex = "1" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
                 </div>
             </div>
             <div>
                 <div>
                     <span>Password <span>*</span></span>
-                    @Html.EditorFor(model => model.Password, new { tabindex = 2 })
-                    @Html.ValidationMessageFor(model => model.Password)
+                    <div>
+                        @Html.EditorFor(model => model.Password, new { tabindex = 2 })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
                 </div>
             </div>
             <div>
                 <div>
                     <span>Confirm password <span>*</span></span>
-                    @Html.EditorFor(model => model.ConfirmPassword, new { tabindex = 3 })
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    <div>
+                        @Html.EditorFor(model => model.ConfirmPassword, new { tabindex = 3 })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    </div>
                 </div>
             </div>
-            <input type="submit" value="Submit" title="Submit" onclick="" style="margin-top: 30px;" />
+            <input id="account-button" type="submit" value="Submit" title="Register" onclick="" style="margin-top: 30px;" />
             <span class="field-validation-error" id="errorText">@ViewBag.ErrorText</span>
         </div>
     </form>
