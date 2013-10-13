@@ -20,6 +20,6 @@
     });
 
     $('.showValue').click(function () {
-        alert($(this).siblings(".dialog").text());
+        $(this).siblings(".dialog").dialog({width:1000, title:'More details', resizable:true});
     });
 });

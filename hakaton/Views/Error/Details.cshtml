@@ -6,6 +6,8 @@
 @Scripts.Render("~/Scripts/details.js")
 @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
 @Styles.Render("~/Content/themes/base/jquery.ui.dialog.css")
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <fieldset>
     <legend><strong>@Html.DisplayFor(model => model.Message)</strong></legend>
 
@@ -85,10 +87,11 @@
                 <tr>
                     <td class="eventType">@ev.EventType.ToString()</td>
                     <td>
-                        @(ev.Target.Length >200 ? ev.Target.Substring(0, 150) + "..." : ev.Target)
-                        @if(ev.Target.Length >200)
+                        @(ev.Target.Length > 200 ? ev.Target.Substring(0, 150) + "..." : ev.Target)
+                        @if (ev.Target.Length > 200)
                         {
-                            <span class="showValue">show more</span>
+                            <br/>
+                            <a style="cursor: pointer;" class="showValue">show more</a>
                             <div class="dialog" style="display: none; width: 400px">@ev.Target</div>
                         }
                     </td>

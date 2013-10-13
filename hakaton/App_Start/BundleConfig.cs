@@ -20,12 +20,18 @@ namespace hakaton
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/fancybutton").Include("~/Scripts/jquery.fancybox-buttons.js"));
+            bundles.Add(new ScriptBundle("~/bundles/fancybox").Include("~/Scripts/jquery.fancybox.pack.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fancybutton").Include("~/Content/jquery.fancybox-buttons.css"));
+            bundles.Add(new StyleBundle("~/Content/fancybox").Include("~/Content/jquery.fancybox.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
