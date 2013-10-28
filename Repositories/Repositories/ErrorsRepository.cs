@@ -39,11 +39,11 @@ namespace Repositories.Repositories
             }
         }
 
-        public List<ErrorBas> GetErrors(Guid userId)
+        public IEnumerable<ErrorBas> GetErrors(Guid userId)
         {
             var errors = _context.ErrorBases.Where(p => p.UserId == userId);
             //errors = errors.Where(p => p.Errors.Where(c => c.Time >= DateTime.Now.AddDays(-period)).ToList().Count > 0);
-            return errors.ToList();
+            return errors;
         }
 
         private ErrorBas createErrorBase(Guid userId, string message)
